@@ -364,7 +364,7 @@
     },
 
     _focusedDateChanged: function(focusedDate, formatDate) {
-      if (!this._ignoreFocusedDateChange && !this._noInput && this.opened) {
+      if (!this._ignoreFocusedDateChange && !this._noInput) {
         this._inputValue = focusedDate ? formatDate(focusedDate) : '';
         this._input().setSelectionRange(0, this._inputValue.length);
       }
@@ -600,27 +600,29 @@
           this.close();
           break;
         case 'esc':
-          if (this._forwardKeysToOverlay) {
-            // The keys are forwarded to ovelay, revert the input text to the cached value
-            this._inputValue = this._cachedInputValue;
-            this._userInputValueChanged();
-
-            if (!this._inputValue) {
-              // Default to today
-              this.$.overlay.focusedDate = new Date();
-            }
-          } else {
-            var newInputValue = this._selectedDate ? this.i18n.formatDate(this._selectedDate) : '';
-            if (newInputValue !== this._inputValue) {
-              this.open();
-              this.$.overlay.focusedDate = this._selectedDate || new Date();
-            } else {
-              this._focusedDate = this._selectedDate;
-            }
-            this._inputValue = newInputValue;
-          }
-
-          this._forwardKeysToOverlay = false;
+          this._focusedDate = this._selectedDate;
+          this.close();
+          // if (this._forwardKeysToOverlay) {
+          //   // The keys are forwarded to ovelay, revert the input text to the cached value
+          //   this._inputValue = this._cachedInputValue;
+          //   this._userInputValueChanged();
+          //
+          //   if (!this._inputValue) {
+          //     // Default to today
+          //     this.$.overlay.focusedDate = new Date();
+          //   }
+          // } else {
+          //   var newInputValue = this._selectedDate ? this.i18n.formatDate(this._selectedDate) : '';
+          //   if (newInputValue !== this._inputValue) {
+          //     this.open();
+          //     this.$.overlay.focusedDate = this._selectedDate || new Date();
+          //   } else {
+          //     this._focusedDate = this._selectedDate;
+          //   }
+          //   this._inputValue = newInputValue;
+          // }
+          //
+          // this._forwardKeysToOverlay = false;
           break;
 
           case 'tab':

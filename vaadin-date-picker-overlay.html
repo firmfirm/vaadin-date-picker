@@ -287,10 +287,10 @@
     </div>
 
     <div id="footer" on-touchend="_preventDefault" role="toolbar">
-      <paper-button id="todayButton" disabled="[[!_isTodayAllowed(minDate, maxDate)]]" on-tap="_onTodayTap" tabindex="-1">
+      <paper-button id="todayButton" disabled="[[!_isTodayAllowed(minDate, maxDate)]]" on-tap="_onTodayTap">
         [[i18n.today]]
       </paper-button>
-      <paper-button id="cancelButton" on-tap="_cancel" tabindex="-1">
+      <paper-button id="cancelButton" on-tap="_cancel">
         [[i18n.cancel]]
       </paper-button>
     </div>
