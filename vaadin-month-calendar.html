@@ -70,23 +70,20 @@
         @apply(--vaadin-date-picker-calendar-cell-today);
       }
 
-      #monthGrid div[today][selected] {
+      #monthGrid div[today][focused] {
         color: var(--dark-theme-text-color);
-        @apply(--vaadin-date-picker-calendar-cell-today-selected);
+
       }
 
       #monthGrid div[focused] {
-        background: var(--light-primary-color);
+        color: var(--light-primary-color);
+        background: var(--primary-color);
         box-sizing: border-box;
         border-radius: 2px;
         @apply(--vaadin-date-picker-calendar-cell-focused);
       }
 
       #monthGrid div[selected] {
-        color: var(--light-primary-color);
-        background: var(--primary-color);
-        box-sizing: border-box;
-        border-radius: 2px;
         @apply(--vaadin-date-picker-calendar-cell-selected);
       }
 
