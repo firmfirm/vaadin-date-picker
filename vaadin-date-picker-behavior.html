@@ -458,6 +458,10 @@
       this._focus();
 
       this.updateStyles();
+
+      if (this.hasValue) {
+        this._focusedDateChanged(this._focusedDate, this.i18n.formatDate);
+      }
     },
 
     // A hack needed for iOS to prevent dropdown from being clipped in an
