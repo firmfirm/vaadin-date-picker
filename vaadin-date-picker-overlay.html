@@ -242,6 +242,10 @@
         clip: rect(0px, 0px, 0px, 0px);
         clip-path: inset(100%);
       }
+
+      paper-button:focus {
+        outline: 1px solid red;
+      }
     </style>
 
     <div id="announcer" role="alert" aria-live="polite">
@@ -718,7 +722,7 @@
               this._moveFocusByDays(-1);
               break;
             case 'enter':
-              this._close();
+              // this._close();
               break;
             case 'space':
               if (vaadin.elements.datepicker.DatePickerHelper._dateEquals(this.focusedDate, this.selectedDate)) {
