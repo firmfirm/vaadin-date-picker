@@ -461,6 +461,7 @@
 
       if (this.hasValue) {
         this._focusedDateChanged(this._focusedDate, this.i18n.formatDate);
+        this._inputChanged = false;
       }
     },
 
@@ -556,7 +557,7 @@
      * Keyboard Navigation
      */
     _eventKey: function(e) {
-      var keys = ['down', 'up', 'enter', 'esc', 'tab'];
+      var keys = ['down', 'up', 'left','right','enter', 'esc', 'tab'];
 
       for (var i = 0; i < keys.length; i++) {
         var k = keys[i];
@@ -595,6 +596,12 @@
             } else {
               this.open();
             }
+          }
+          break;
+        case 'left':
+        case 'right':
+          if (!this._inputChanged) {
+            this._forwardKeysToOverlay = true;
           }
           break;
         case 'enter':
@@ -661,6 +668,8 @@
         // iOS needs a refit after input blur animation has finished
         this.$.dropdown.async(this.$.dropdown.refit, 500);
       }
+
+      this._inputChanged = true;
     },
 
     _announceFocusedDate: function(_focusedDate, opened) {
